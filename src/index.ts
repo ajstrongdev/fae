@@ -1,14 +1,13 @@
 import { Editor } from "./editor.ts";
 import { Renderer } from "./renderer.ts";
+import { Terminal } from "./terminal.ts";
 import { parseKey } from "./utils.ts";
 
 const editor = new Editor();
 const renderer = new Renderer();
+const terminal = new Terminal();
 
-process.stdin.setRawMode(true);
-process.stdin.resume();
-process.stdin.setEncoding("utf8");
-
+terminal.start();
 renderer.render(editor);
 
 process.stdin.on("data", (input: string) => {
@@ -37,6 +36,7 @@ process.stdin.on("data", (input: string) => {
       editor.moveDown();
       break;
     case "quit":
+      terminal.stop();
       process.exit(0);
       break;
     case "save":
