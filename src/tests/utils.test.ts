@@ -45,14 +45,8 @@ test("parse newline", () => {
 });
 
 test("parse quit", () => {
-  expect(parseKey("\x03")).toEqual({
+  expect(parseKey("\x18")).toEqual({
     type: "quit",
-  });
-});
-
-test("parse save", () => {
-  expect(parseKey("\x13")).toEqual({
-    type: "save",
   });
 });
 

@@ -4,8 +4,8 @@ import { Terminal } from "./terminal.ts";
 import { parseKey } from "./utils.ts";
 
 const editor = new Editor();
-const renderer = new Renderer();
 const terminal = new Terminal();
+const renderer = new Renderer(terminal);
 
 terminal.start();
 renderer.render(editor);
@@ -38,9 +38,6 @@ process.stdin.on("data", (input: string) => {
     case "quit":
       terminal.stop();
       process.exit(0);
-      break;
-    case "save":
-      console.log("TODO");
   }
 
   renderer.render(editor);
