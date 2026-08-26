@@ -1,0 +1,15 @@
+{
+  "name": "fae",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^7"
+  },
+  "scripts": {
+    "build": "scriptc build src/index.ts -o ./build/fae --dynamic"
+  }
+}
