@@ -37,7 +37,7 @@ export class Editor {
   }
 
   moveUp() {
-    this.cursor.moveUp();
+    this.cursor.moveUp(this.buffer);
   }
 
   moveDown() {

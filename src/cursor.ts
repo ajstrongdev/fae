@@ -18,15 +18,19 @@ export class Cursor {
     }
   }
 
-  moveUp() {
-    if (this.y > 0) {
-      this.y--;
-    }
+  moveUp(buffer: TextBuffer) {
+    if (this.y === 0) return;
+    this.y--;
+    const line = buffer.lines[this.y];
+    if (line === undefined) return;
+    this.x = Math.min(this.x, line.length);
   }
 
   moveDown(buffer: TextBuffer) {
-    if (this.y < buffer.lines.length - 1) {
-      this.y++;
-    }
+    if (this.y >= buffer.lines.length - 1) return;
+    this.y++;
+    const line = buffer.lines[this.y];
+    if (line === undefined) return;
+    this.x = Math.min(this.x, line.length);
   }
 }
