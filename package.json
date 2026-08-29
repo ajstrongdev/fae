@@ -1,6 +1,6 @@
 {
   "name": "fae",
-  "module": "src/index.ts",
+  "module": "./index.ts",
   "type": "module",
   "private": true,
   "devDependencies": {

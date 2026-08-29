@@ -1,7 +1,7 @@
-import { Editor } from "./editor.ts";
-import { Renderer } from "./renderer.ts";
-import { Terminal } from "./terminal.ts";
-import { parseKey } from "./utils.ts";
+import { Editor } from "./src/editor.ts";
+import { Renderer } from "./src/renderer.ts";
+import { Terminal } from "./src/terminal.ts";
+import { parseKey } from "./src/utils.ts";
 
 const editor = new Editor();
 const terminal = new Terminal();
