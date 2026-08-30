@@ -9,8 +9,8 @@ const editor = new Editor();
 const terminal = new Terminal();
 let size = terminal.size();
 
-const renderer = new Renderer(terminal);
 const viewport = new Viewport(size.width, size.height);
+const renderer = new Renderer(terminal, viewport);
 
 terminal.start();
 viewport.followCursor(editor.cursor);
@@ -45,6 +45,6 @@ process.stdin.on("data", (input: string) => {
       terminal.stop();
       process.exit(0);
   }
-
+  viewport.followCursor(editor.cursor);
   renderer.render(editor);
 });
