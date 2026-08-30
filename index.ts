@@ -2,12 +2,18 @@ import { Editor } from "./src/editor.ts";
 import { Renderer } from "./src/renderer.ts";
 import { Terminal } from "./src/terminal.ts";
 import { parseKey } from "./src/utils.ts";
+import { Viewport } from "./src/viewport.ts";
 
 const editor = new Editor();
+
 const terminal = new Terminal();
-const renderer = new Renderer(terminal);
+let size = terminal.size();
+
+const viewport = new Viewport(size.width, size.height);
+const renderer = new Renderer(terminal, viewport);
 
 terminal.start();
+viewport.followCursor(editor.cursor);
 renderer.render(editor);
 
 process.stdin.on("data", (input: string) => {
@@ -39,6 +45,6 @@ process.stdin.on("data", (input: string) => {
       terminal.stop();
       process.exit(0);
   }
-
+  viewport.followCursor(editor.cursor);
   renderer.render(editor);
 });
