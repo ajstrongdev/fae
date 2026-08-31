@@ -17,9 +17,24 @@ export class Editor {
   }
 
   backspace() {
-    if (this.cursor.x === 0) return;
-    this.buffer.backspace({ x: this.cursor.x, y: this.cursor.y } as BufferType);
-    this.cursor.moveLeft();
+    if (this.cursor.x > 0) {
+      this.buffer.backspace({
+        x: this.cursor.x,
+        y: this.cursor.y,
+      } as BufferType);
+      this.cursor.moveLeft();
+      return;
+    }
+    if (this.cursor.y === 0) return;
+    const previousLine = this.buffer.lines[this.cursor.y - 1];
+    if (previousLine === undefined) return;
+    const previousLength = previousLine.length;
+    this.buffer.backspace({
+      x: this.cursor.x,
+      y: this.cursor.y,
+    } as BufferType);
+    this.cursor.y--;
+    this.cursor.x = previousLength;
   }
 
   newline() {

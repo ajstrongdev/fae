@@ -1,6 +1,6 @@
 import { expect, test } from "bun:test";
 import { TextBuffer } from "../buffer";
-import type { InsertType } from "../types.ts";
+import type { BufferType, InsertType } from "../types.ts";
 
 test("starts on empty line", () => {
   const buffer = new TextBuffer();
@@ -23,4 +23,11 @@ test("creates new line", () => {
   const buffer = new TextBuffer();
   buffer.lines = ["Hello, world!"];
   buffer.newline({ x: 5, y: 0 } as InsertType);
+});
+
+test("lines", () => {
+  const buffer = new TextBuffer();
+  buffer.lines = ["hello", "world"];
+  buffer.backspace({ x: 0, y: 1 } as BufferType);
+  expect(buffer.lines).toEqual(["helloworld"]);
 });
