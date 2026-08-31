@@ -29,3 +29,11 @@ process.stdin.on("data", (data: string) => {
   viewport.followCursor(editor.cursor);
   renderer.render(editor);
 });
+
+process.stdout.on("resize", () => {
+  size = terminal.size();
+  viewport.width = size.width;
+  viewport.height = size.height;
+  viewport.followCursor(editor.cursor);
+  renderer.render(editor);
+});
