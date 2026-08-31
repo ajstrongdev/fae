@@ -1,4 +1,4 @@
-import type { BufferType, InsertType } from "./types";
+import type { BufferType, InsertType } from "../types";
 
 export class TextBuffer {
   lines: string[] = [""];

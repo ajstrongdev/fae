@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test";
-import { Terminal } from "../terminal";
+import { Terminal } from "../services/terminal.ts";
 
 test("fetches terminal size", () => {
   const terminal = new Terminal();

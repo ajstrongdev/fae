@@ -1,6 +1,6 @@
 import { expect, test } from "bun:test";
-import { Viewport } from "../viewport";
-import { Cursor } from "../cursor";
+import { Viewport } from "../services/viewport.ts";
+import { Cursor } from "../services/cursor.ts";
 
 test("viewport shows cursor (right)", () => {
   const viewport = new Viewport(8, 8);
