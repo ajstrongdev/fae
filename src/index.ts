@@ -3,6 +3,7 @@ import { Renderer } from "./services/renderer.ts";
 import { Terminal } from "./services/terminal.ts";
 import { parseKey } from "./utils/inputs.ts";
 import { Viewport } from "./services/viewport.ts";
+import { InputHandler } from "./services/inputs.ts";
 
 const editor = new Editor();
 
@@ -11,40 +12,20 @@ let size = terminal.size();
 
 const viewport = new Viewport(size.width, size.height);
 const renderer = new Renderer(terminal, viewport);
+const handler = new InputHandler(editor);
 
 terminal.start();
 viewport.followCursor(editor.cursor);
 renderer.render(editor);
 
-process.stdin.on("data", (input: string) => {
-  const key = parseKey(input);
+process.stdin.on("data", (data: string) => {
+  const key = parseKey(data);
   if (key === null) return;
-  switch (key.type) {
-    case "character":
-      editor.insert(key.value);
-      break;
-    case "backspace":
-      editor.backspace();
-      break;
-    case "enter":
-      editor.newline();
-      break;
-    case "left":
-      editor.moveLeft();
-      break;
-    case "right":
-      editor.moveRight();
-      break;
-    case "up":
-      editor.moveUp();
-      break;
-    case "down":
-      editor.moveDown();
-      break;
-    case "quit":
-      terminal.stop();
-      process.exit(0);
+  if (key.type === "quit") {
+    terminal.stop();
+    process.exit(0);
   }
+  handler.handle(key);
   viewport.followCursor(editor.cursor);
   renderer.render(editor);
 });
