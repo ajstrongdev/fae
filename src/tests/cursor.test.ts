@@ -1,6 +1,6 @@
 import { expect, test } from "bun:test";
-import { TextBuffer } from "../buffer";
-import { Cursor } from "../cursor";
+import { TextBuffer } from "../services/buffer.ts";
+import { Cursor } from "../services/cursor.ts";
 
 test("starts at 0,0", () => {
   const cursor = new Cursor();

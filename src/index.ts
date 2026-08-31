@@ -1,8 +1,8 @@
-import { Editor } from "./src/editor.ts";
-import { Renderer } from "./src/renderer.ts";
-import { Terminal } from "./src/terminal.ts";
-import { parseKey } from "./src/utils.ts";
-import { Viewport } from "./src/viewport.ts";
+import { Editor } from "./services/editor.ts";
+import { Renderer } from "./services/renderer.ts";
+import { Terminal } from "./services/terminal.ts";
+import { parseKey } from "./utils/inputs.ts";
+import { Viewport } from "./services/viewport.ts";
 
 const editor = new Editor();
 

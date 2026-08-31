@@ -1,4 +1,4 @@
-import type { Key } from "./types.ts";
+import type { Key } from "../types";
 
 export function parseKey(input: string): Key | null {
   if (input === "\x1b[A") {

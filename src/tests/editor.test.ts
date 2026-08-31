@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test";
-import { Editor } from "../editor";
+import { Editor } from "../services/editor.ts";
 
 test("starts on empty buffer", () => {
   const editor = new Editor();

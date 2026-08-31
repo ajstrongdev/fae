@@ -1,6 +1,6 @@
 import { Cursor } from "./cursor.ts";
 import { TextBuffer } from "./buffer.ts";
-import type { BufferType, InsertType } from "./types";
+import type { BufferType, InsertType } from "../types";
 
 export class Editor {
   readonly buffer: TextBuffer;

@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test";
-import { parseKey } from "../utils.ts";
+import { parseKey } from "../utils/inputs.ts";
 
 test("parse character", () => {
   expect(parseKey("a")).toEqual({

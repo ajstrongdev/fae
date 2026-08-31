@@ -1,6 +1,6 @@
 import { expect, test } from "bun:test";
-import { TextBuffer } from "../buffer";
-import type { BufferType, InsertType } from "../types.ts";
+import { TextBuffer } from "../services/buffer.ts";
+import type { BufferType, InsertType } from "../types";
 
 test("starts on empty line", () => {
   const buffer = new TextBuffer();
